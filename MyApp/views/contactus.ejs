@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+      <% if(errors != {}){ %>
+        <ul>
+          <% for(i=0; i< errors.length; i++) {%>
+            <li><%= errors[i].msg %></li>
+          <% } %>
+        </ul>
+      <% } %>
+      
+      <form action='contactus' method='post'>
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+        Full name:<br>
+        <input type="text" name="fname"><br><br>
+        Type:<br>
+        <select name="type">
+          <option value="suggesstion">Suggesstion</option>
+          <option value="complaint">Complaint</option>
+        </select><br><br>
+        Message:<br>
+        <textarea rows="4" cols="50" name='message'></textarea><br><br>
+        <input type='submit' value='Submit'>
+      </form>
+  </body>
+</html>
